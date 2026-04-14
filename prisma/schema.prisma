@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  email     String
+  name      String
+  role      Role     @default(customer)
+  cardId    String?  @unique
+  card      Card?    @relation(fields: [cardId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Card {
+  id           String      @id @default(uuid())
+  userId       String?
+  status       CardStatus  @default(active)
+  templateId   Int         @default(1)
+  category     String?
+  package      Package?
+  name         String
+  title        String?
+  company      String?
+  phone        String?
+  email        String?
+  address      String?
+  website      String?
+  instagram    String?
+  twitter      String?
+  linkedin     String?
+  facebook     String?
+  tiktok       String?
+  youtube      String?
+  whatsapp     String?
+  bio          String?
+  mapLink      String?
+  portfolio    String?
+  photoUrl     String?
+  logoUrl      String?
+  customColors Json?
+  gallery      Json?
+  views        Int         @default(0)
+  canEdit      Boolean     @default(false)
+  canViewStats Boolean     @default(false)
+  allowedTemplates Int[]   @default([])
+  clicks       Json?
+  user         User?
+  orders       Order[]
+  analytics    Analytics[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  status        OrderStatus   @default(pending)
+  cardId        String?
+  card          Card?         @relation(fields: [cardId], references: [id])
+  name          String
+  phone         String
+  email         String
+  company       String?
+  title         String?
+  category      String?
+  package       Package?
+  templateId    Int?
+  notes         String?
+  paymentStatus PaymentStatus @default(pending)
+  paymentAmount Decimal?      @db.Decimal(10, 2)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Analytics {
+  id        String    @id @default(uuid())
+  cardId    String
+  card      Card      @relation(fields: [cardId], references: [id])
+  eventType EventType
+  ipAddress String?
+  userAgent String?
+  referrer  String?
+  createdAt DateTime  @default(now())
+}
+
+enum Role {
+  admin
+  customer
+}
+
+enum CardStatus {
+  active
+  inactive
+  draft
+}
+
+enum Package {
+  starter
+  pro
+  premium
+}
+
+enum OrderStatus {
+  pending
+  processing
+  done
+  cancelled
+}
+
+enum PaymentStatus {
+  pending
+  paid
+  failed
+}
+
+enum EventType {
+  view
+  click_phone
+  click_email
+  click_whatsapp
+  click_social
+}

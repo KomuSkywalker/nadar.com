@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #F5F0EB;
+  --bg-secondary: #FFFFFF;
+  --bg-dark: #1A1A1A;
+  --bg-card: #2C2C2C;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-light: #9B9B9B;
+  --accent: #C8102E;
+  --border: #E0DCD7;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--bg-dark);
+  color: var(--white);
+  border: none;
+  padding: 16px 48px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: #333333;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--bg-dark);
+  border: 1px solid var(--bg-dark);
+  padding: 16px 48px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.btn-sm {
+  padding: 10px 24px;
+}
+
+/* Form inputs */
+.input-field {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+.input-field:focus {
+  border-color: var(--bg-dark);
+}
+.input-field::placeholder {
+  color: var(--text-light);
+}
+
+.input-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Section label (subdued category tag — used sparingly) */
+.section-label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  border: none;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Admin table */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+.badge-pending {
+  color: #92400E;
+  background: #FEF3C7;
+  border-color: #F59E0B;
+}
+.badge-processing {
+  color: #1D4ED8;
+  background: #EFF6FF;
+  border-color: #93C5FD;
+}
+.badge-done {
+  color: #065F46;
+  background: #ECFDF5;
+  border-color: #6EE7B7;
+}
+.badge-cancelled {
+  color: #991B1B;
+  background: #FEF2F2;
+  border-color: #FCA5A5;
+}
+.badge-active {
+  color: #065F46;
+  background: #ECFDF5;
+  border-color: #6EE7B7;
+}
+.badge-inactive {
+  color: #6B6B6B;
+  background: #F5F0EB;
+  border-color: #E0DCD7;
+}
