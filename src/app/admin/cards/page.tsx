@@ -18,6 +18,7 @@ interface Card {
   status: string
   views: number
   createdAt: string
+  photoUrl?: string | null
   user?: { id: string; username: string; name: string } | null
 }
 
@@ -157,17 +158,27 @@ export default function AdminCardsPage() {
                     <tr key={card.id}>
                       <td>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          {/* Mini template preview */}
-                          <div
-                            style={{
-                              width: '36px',
-                              height: '48px',
-                              borderRadius: '4px',
-                              overflow: 'hidden',
-                              flexShrink: 0,
-                            }}
-                            className={`bg-gradient-to-br ${tpl.bg}`}
-                          />
+                          {/* Photo thumbnail */}
+                          {card.photoUrl ? (
+                            <img
+                              src={card.photoUrl}
+                              alt={card.name}
+                              style={{
+                                width: 40, height: 40, borderRadius: '50%',
+                                objectFit: 'cover', flexShrink: 0,
+                                border: '1px solid #E0DCD7',
+                              }}
+                            />
+                          ) : (
+                            <div style={{
+                              width: 40, height: 40, borderRadius: '50%',
+                              background: '#E0DCD7', flexShrink: 0,
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                              fontSize: 16, fontWeight: 600, color: '#6E6A63',
+                            }}>
+                              {card.name.charAt(0).toUpperCase()}
+                            </div>
+                          )}
                           <div>
                             <div style={{ fontSize: '14px', fontWeight: 500, color: '#1A1A1A' }}>
                               {card.name}

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CardData } from './types'
-import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon } from './icons'
+import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, LinkedInIcon, TwitterIcon } from './icons'
 
 const ACCENT = '#E8E2D9'
 
@@ -24,8 +24,10 @@ export default function TemplateFelix({ card }: { card: CardData }) {
 
   const socials = [
     card.instagram && { icon: <InstagramIcon size={16} color="#666" />, href: card.instagram },
-    card.facebook && { icon: <FacebookIcon size={16} color="#666" />, href: card.facebook },
-    card.tiktok && { icon: <TikTokIcon size={16} color="#666" />, href: card.tiktok },
+    card.facebook  && { icon: <FacebookIcon  size={16} color="#666" />, href: card.facebook },
+    card.tiktok    && { icon: <TikTokIcon    size={16} color="#666" />, href: card.tiktok },
+    card.linkedin  && { icon: <LinkedInIcon  size={16} color="#666" />, href: card.linkedin },
+    card.twitter   && { icon: <TwitterIcon   size={16} color="#666" />, href: card.twitter },
   ].filter(Boolean) as { icon: React.ReactNode; href: string }[]
 
   return (
@@ -110,7 +112,11 @@ export default function TemplateFelix({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'right', marginTop: 12, fontSize: 11, color: '#9B9B9B' }}>
-          <span style={{ fontWeight: 600 }}>Nadar</span> Sanal Kartvizit®
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            <span style={{ fontWeight: 600 }}>Nadar</span> Sanal Kartvizit®
+          </a>
         </div>
       </div>
 

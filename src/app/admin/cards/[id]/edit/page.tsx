@@ -11,6 +11,7 @@ import { templates } from '@/lib/templates'
 import { packages } from '@/lib/packages'
 import { ArrowLeft, Save, Check, Upload } from 'lucide-react'
 import type { Template } from '@/lib/templates'
+import ImageCropper from '@/components/ImageCropper'
 
 function MiniCardPreview({ tpl }: { tpl: Template }) {
   const isLight = tpl.theme === 'light'
@@ -76,6 +77,7 @@ export default function EditCardPage() {
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [uploading, setUploading] = useState(false)
+  const [cropSrc, setCropSrc] = useState<string | null>(null)
 
   const fetchCard = useCallback(async () => {
     const authRes = await fetch('/api/auth/me')
@@ -95,10 +97,17 @@ export default function EditCardPage() {
     setForm((f) => ({ ...f, [field]: value }))
 
   const handlePhotoUpload = async (file: File) => {
+    const reader = new FileReader()
+    reader.onload = (e) => setCropSrc(e.target?.result as string)
+    reader.readAsDataURL(file)
+  }
+
+  const handleCropComplete = async (blob: Blob) => {
+    setCropSrc(null)
     setUploading(true)
     try {
       const fd = new FormData()
-      fd.append('file', file)
+      fd.append('file', new File([blob], 'photo.jpg', { type: 'image/jpeg' }))
       const res = await fetch('/api/upload', { method: 'POST', body: fd })
       const data = await res.json()
       if (data.url) setField('photoUrl', data.url)
@@ -123,6 +132,16 @@ export default function EditCardPage() {
     } finally {
       setSaving(false)
     }
+  }
+
+  if (cropSrc) {
+    return (
+      <ImageCropper
+        imageSrc={cropSrc}
+        onCancel={() => setCropSrc(null)}
+        onCropComplete={handleCropComplete}
+      />
+    )
   }
 
   if (loading) {

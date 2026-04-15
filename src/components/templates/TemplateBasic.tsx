@@ -2,7 +2,7 @@ import React from 'react'
 import type { CardData } from './types'
 import {
   PhoneIcon, MailIcon, MapPinIcon, BuildingIcon,
-  WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon,
+  WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, LinkedInIcon, TwitterIcon,
 } from './icons'
 
 function getMapHref(card: CardData) {
@@ -29,6 +29,8 @@ export default function TemplateBasic({ card }: { card: CardData }) {
     card.instagram && { icon: <InstagramIcon size={22} color="#2C2C2C" />, href: card.instagram },
     card.facebook  && { icon: <FacebookIcon  size={22} color="#2C2C2C" />, href: card.facebook },
     card.tiktok    && { icon: <TikTokIcon    size={22} color="#2C2C2C" />, href: card.tiktok },
+    card.linkedin  && { icon: <LinkedInIcon  size={22} color="#2C2C2C" />, href: card.linkedin },
+    card.twitter   && { icon: <TwitterIcon   size={22} color="#2C2C2C" />, href: card.twitter },
   ].filter(Boolean) as { icon: React.ReactNode; href: string }[]
 
   return (
@@ -157,7 +159,11 @@ export default function TemplateBasic({ card }: { card: CardData }) {
 
         {/* Nadar branding */}
         <div style={{ textAlign: 'center', marginTop: 18, fontSize: 12, color: '#A09A92' }}>
-          <span style={{ fontWeight: 700, color: '#6E6A63' }}>Nadar</span> Sanal Kartvizit®
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            <span style={{ fontWeight: 700, color: '#6E6A63' }}>Nadar</span> Sanal Kartvizit®
+          </a>
         </div>
       </div>
 

@@ -104,6 +104,26 @@ export function TikTokIcon({ size = 24, color = 'currentColor', sw = 1.8 }: Icon
   )
 }
 
+export function LinkedInIcon({ size = 24, color = 'currentColor', sw = 1.8 }: IconProps) {
+  return (
+    <I size={size} color={color} sw={sw} d={
+      <>
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </>
+    } />
+  )
+}
+
+export function TwitterIcon({ size = 24, color = 'currentColor', sw = 1.8 }: IconProps) {
+  return (
+    <I size={size} color={color} sw={sw} d={
+      <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.768L20 4" />
+    } />
+  )
+}
+
 export function WhatsAppIcon({ size = 24, color = 'currentColor' }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>

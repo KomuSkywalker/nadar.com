@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CardData } from './types'
-import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon } from './icons'
+import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, LinkedInIcon, TwitterIcon } from './icons'
 
 function getMapHref(card: CardData) {
   if (card.mapLink) return card.mapLink
@@ -15,8 +15,10 @@ function waHref(w?: string | null) {
 export default function TemplateArt({ card }: { card: CardData }) {
   const socials = [
     card.instagram && { icon: <InstagramIcon size={17} color="#8B7D6B" />, href: card.instagram },
-    card.facebook && { icon: <FacebookIcon size={17} color="#8B7D6B" />, href: card.facebook },
-    card.tiktok && { icon: <TikTokIcon size={17} color="#8B7D6B" />, href: card.tiktok },
+    card.facebook  && { icon: <FacebookIcon  size={17} color="#8B7D6B" />, href: card.facebook },
+    card.tiktok    && { icon: <TikTokIcon    size={17} color="#8B7D6B" />, href: card.tiktok },
+    card.linkedin  && { icon: <LinkedInIcon  size={17} color="#8B7D6B" />, href: card.linkedin },
+    card.twitter   && { icon: <TwitterIcon   size={17} color="#8B7D6B" />, href: card.twitter },
   ].filter(Boolean) as { icon: React.ReactNode; href: string }[]
 
   const buttons = [
@@ -91,7 +93,11 @@ export default function TemplateArt({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 18, fontSize: 11, color: '#A09080', letterSpacing: '0.08em' }}>
-          <span style={{ fontWeight: 700 }}>Nadar</span> Sanal Kartvizit®
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            <span style={{ fontWeight: 700 }}>Nadar</span> Sanal Kartvizit®
+          </a>
         </div>
       </div>
       <style>{`@media(max-width:640px){.art-grid{grid-template-columns:1fr !important;}}`}</style>

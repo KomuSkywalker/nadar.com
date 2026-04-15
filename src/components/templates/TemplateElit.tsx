@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CardData } from './types'
-import { PhoneIcon, MailIcon, MapPinIcon, GlobeIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon } from './icons'
+import { PhoneIcon, MailIcon, MapPinIcon, GlobeIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, LinkedInIcon, TwitterIcon } from './icons'
 
 const G = '#C9A84C'
 
@@ -25,8 +25,10 @@ export default function TemplateElit({ card }: { card: CardData }) {
 
   const socials = [
     card.instagram && { icon: <InstagramIcon size={15} color="#5E5A50" />, href: card.instagram },
-    card.facebook && { icon: <FacebookIcon size={15} color="#5E5A50" />, href: card.facebook },
-    card.tiktok && { icon: <TikTokIcon size={15} color="#5E5A50" />, href: card.tiktok },
+    card.facebook  && { icon: <FacebookIcon  size={15} color="#5E5A50" />, href: card.facebook },
+    card.tiktok    && { icon: <TikTokIcon    size={15} color="#5E5A50" />, href: card.tiktok },
+    card.linkedin  && { icon: <LinkedInIcon  size={15} color="#5E5A50" />, href: card.linkedin },
+    card.twitter   && { icon: <TwitterIcon   size={15} color="#5E5A50" />, href: card.twitter },
   ].filter(Boolean) as { icon: React.ReactNode; href: string }[]
 
   const corners = [
@@ -112,7 +114,11 @@ export default function TemplateElit({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 18, fontSize: 10, color: '#4A4538', letterSpacing: '0.15em' }}>
-          <span style={{ fontWeight: 700, color: G }}>NADAR</span> Sanal Kartvizit®
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            <span style={{ fontWeight: 700, color: G }}>NADAR</span> Sanal Kartvizit®
+          </a>
         </div>
       </div>
     </div>

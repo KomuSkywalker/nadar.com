@@ -4,6 +4,14 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Nadar Kartvizit — Dijital Kartvizit Platformu',
   description: 'Profesyonel dijital kartvizitinizi dakikalar içinde oluşturun. Tek link ile paylaşın.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'Nadar Kartvizit',
     description: 'Profesyonel dijital kartvizit platformu',

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import type { CardData } from './types'
-import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, BuildingIcon } from './icons'
+import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, InstagramIcon, FacebookIcon, TikTokIcon, BuildingIcon, LinkedInIcon, TwitterIcon } from './icons'
 
 function getMapHref(card: CardData) {
   if (card.mapLink) return card.mapLink
@@ -24,9 +24,11 @@ export default function TemplateAbsurd({ card }: { card: CardData }) {
 
   const socialIcons = [
     card.instagram && { icon: <InstagramIcon size={15} color="#000" />, href: card.instagram },
-    card.facebook && { icon: <FacebookIcon size={15} color="#000" />, href: card.facebook },
-    card.tiktok && { icon: <TikTokIcon size={15} color="#000" />, href: card.tiktok },
-    card.portfolio && { icon: <BuildingIcon size={15} color="#000" />, href: card.portfolio },
+    card.facebook  && { icon: <FacebookIcon  size={15} color="#000" />, href: card.facebook },
+    card.tiktok    && { icon: <TikTokIcon    size={15} color="#000" />, href: card.tiktok },
+    card.linkedin  && { icon: <LinkedInIcon  size={15} color="#000" />, href: card.linkedin },
+    card.twitter   && { icon: <TwitterIcon   size={15} color="#000" />, href: card.twitter },
+    card.portfolio && { icon: <BuildingIcon  size={15} color="#000" />, href: card.portfolio },
   ].filter(Boolean) as { icon: React.ReactNode; href: string }[]
 
   return (
@@ -102,7 +104,11 @@ export default function TemplateAbsurd({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
-          NADAR® SANAL KARTVIZIT
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            NADAR® SANAL KARTVIZIT
+          </a>
         </div>
       </div>
 
