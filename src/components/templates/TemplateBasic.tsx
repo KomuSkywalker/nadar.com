@@ -159,9 +159,7 @@ export default function TemplateBasic({ card }: { card: CardData }) {
 
         {/* Nadar branding */}
         <div style={{ textAlign: 'center', marginTop: 18, fontSize: 12, color: '#A09A92' }}>
-          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+          <a href="/" className="nadar-brand-link" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <span style={{ fontWeight: 700, color: '#6E6A63' }}>Nadar</span> Sanal Kartvizit®
           </a>
         </div>

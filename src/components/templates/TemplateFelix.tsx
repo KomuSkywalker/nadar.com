@@ -112,9 +112,7 @@ export default function TemplateFelix({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'right', marginTop: 12, fontSize: 11, color: '#9B9B9B' }}>
-          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+          <a href="/" className="nadar-brand-link" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <span style={{ fontWeight: 600 }}>Nadar</span> Sanal Kartvizit®
           </a>
         </div>

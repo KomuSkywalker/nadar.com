@@ -104,9 +104,7 @@ export default function TemplateAbsurd({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
-          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+          <a href="/" className="nadar-brand-link" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             NADAR® SANAL KARTVIZIT
           </a>
         </div>

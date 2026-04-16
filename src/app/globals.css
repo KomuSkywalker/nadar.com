@@ -19,6 +19,13 @@
   padding: 0;
 }
 
+.nadar-brand-link {
+  transition: opacity 0.2s;
+}
+.nadar-brand-link:hover {
+  opacity: 0.7;
+}
+
 html {
   scroll-behavior: smooth;
 }

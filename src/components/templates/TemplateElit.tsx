@@ -114,9 +114,7 @@ export default function TemplateElit({ card }: { card: CardData }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 18, fontSize: 10, color: '#4A4538', letterSpacing: '0.15em' }}>
-          <a href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'opacity 0.2s', cursor: 'pointer' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+          <a href="/" className="nadar-brand-link" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <span style={{ fontWeight: 700, color: G }}>NADAR</span> Sanal Kartvizit®
           </a>
         </div>
